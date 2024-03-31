@@ -4,7 +4,7 @@ import sys
 
 def add_new_user(name: str, phone: str, filename: str):
     """
-    Добавление нового пользователя.
+    Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
     """
     new_line = '\n' if read_all(filename) != "" else ''
     with open(filename, "a", encoding="utf-8") as file:
@@ -13,7 +13,7 @@ def add_new_user(name: str, phone: str, filename: str):
 
 def read_all(filename: str) -> str:
     """
-    Возвращает все содержимое телефонной книги.
+    Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЃРѕРґРµСЂР¶РёРјРѕРµ С‚РµР»РµС„РѕРЅРЅРѕР№ РєРЅРёРіРё.
     """
     with open(filename, "r", encoding="utf-8") as file:
         return file.read()
@@ -21,24 +21,24 @@ def read_all(filename: str) -> str:
 
 def search_user(filename: str, data: str) -> str:
     """
-    Поиск записи по критерию data.
+    РџРѕРёСЃРє Р·Р°РїРёСЃРё РїРѕ РєСЂРёС‚РµСЂРёСЋ data.
     """
     with open(filename, "r", encoding="utf-8") as file:
         list_1 = file.read().split("\n")
     result = []
     result = [i for i in list_1 if data in i]
     if not result:
-        return "По указанному значению совпадений не найдено"
+        return "РџРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ СЃРѕРІРїР°РґРµРЅРёР№ РЅРµ РЅР°Р№РґРµРЅРѕ"
     return "\n".join(result)
 
 
 def transfer_data(filename: str, new_file: str, num_row: int):
     """
-    Функция  для переноса указанной строки из одного файла
-    в другой
-    source: str - имя исходного файла
-    dest: str - имя файла куда переносим
-    num_row: int - номер переносимой строки
+    Р¤СѓРЅРєС†РёСЏ  РґР»СЏ РїРµСЂРµРЅРѕСЃР° СѓРєР°Р·Р°РЅРЅРѕР№ СЃС‚СЂРѕРєРё РёР· РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
+    РІ РґСЂСѓРіРѕР№
+    source: str - РёРјСЏ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
+    dest: str - РёРјСЏ С„Р°Р№Р»Р° РєСѓРґР° РїРµСЂРµРЅРѕСЃРёРј
+    num_row: int - РЅРѕРјРµСЂ РїРµСЂРµРЅРѕСЃРёРјРѕР№ СЃС‚СЂРѕРєРё
     """
 
     with open(filename, "r", encoding="utf-8") as file:
@@ -48,6 +48,7 @@ def transfer_data(filename: str, new_file: str, num_row: int):
         new_file.write(list_1[num_row - 1])
 
     return 0
+
 
 def phonebook_show(filename: str):
     with open(filename, "r", encoding="utf-8") as file:
@@ -61,43 +62,42 @@ def phonebook_show(filename: str):
         for i in range(1, count + 1):
             iter.append(i)
 
-        ph_strochno = {k:v for k, v in zip(iter, list_1)}
+        ph_strochno = {k: v for k, v in zip(iter, list_1)}
         for i in ph_strochno.keys():
             print(f"{i}: {ph_strochno[i]}")
 
 
 INFO_STRING = """
-Выберите режим работы:
-1 - вывести все данные
-2 - добавление нового пользователя
-3 - поиск
-4 - перенос записи в другой файл
-0 - выход
+Р’С‹Р±РµСЂРёС‚Рµ СЂРµР¶РёРј СЂР°Р±РѕС‚С‹:
+1 - РІС‹РІРµСЃС‚Рё РІСЃРµ РґР°РЅРЅС‹Рµ
+2 - РґРѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+3 - РїРѕРёСЃРє
+4 - РїРµСЂРµРЅРѕСЃ Р·Р°РїРёСЃРё РІ РґСЂСѓРіРѕР№ С„Р°Р№Р»
+0 - РІС‹С…РѕРґ
 """
 
 file = "text.txt"
 
 if file not in os.listdir():
-    print("указанное имя файла отсутствует")
+    print("СѓРєР°Р·Р°РЅРЅРѕРµ РёРјСЏ С„Р°Р№Р»Р° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚")
     sys.exit()
-
 
 while True:
     mode = int(input(INFO_STRING))
     if mode == 1:
         print(read_all(file))
     elif mode == 2:
-        name = input("Введите Ваше имя: ")
-        phone = input("Введите Ваш телефон: ")
+        name = input("Р’РІРµРґРёС‚Рµ Р’Р°С€Рµ РёРјСЏ: ")
+        phone = input("Р’РІРµРґРёС‚Рµ Р’Р°С€ С‚РµР»РµС„РѕРЅ: ")
         add_new_user(name, phone, file)
     elif mode == 3:
-        data = input("Введите значение: ")
+        data = input("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ: ")
         print(search_user(file, data))
     elif mode == 4:
         phonebook_show(file)
-        new_file = input("Введите имя новой телефонной книги: ")
-        num_row = int(input("Введите номер строки, которую хотите скопировать в новую телефонную книгу: "))
+        new_file = input("Р’РІРµРґРёС‚Рµ РёРјСЏ РЅРѕРІРѕР№ С‚РµР»РµС„РѕРЅРЅРѕР№ РєРЅРёРіРё: ")
+        num_row = int(input("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё, РєРѕС‚РѕСЂСѓСЋ С…РѕС‚РёС‚Рµ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ РІ РЅРѕРІСѓСЋ С‚РµР»РµС„РѕРЅРЅСѓСЋ РєРЅРёРіСѓ: "))
         transfer_data(file, new_file, num_row)
-        print("Строка скопирована в новую телефонную книгу.")
+        print("РЎС‚СЂРѕРєР° СЃРєРѕРїРёСЂРѕРІР°РЅР° РІ РЅРѕРІСѓСЋ С‚РµР»РµС„РѕРЅРЅСѓСЋ РєРЅРёРіСѓ.")
     elif mode == 0:
         exit()
